@@ -10,7 +10,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ms">
-      <body>{children}</body>
+      <body>
+        <div className="row mt-5">
+          <div className="col-12 text-center mt-5">
+            <h1>Let's learn A B C!</h1>
+          </div>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
