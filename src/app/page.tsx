@@ -10,15 +10,15 @@ interface AnimationProp { x: number | number[], opacity: number | number[] };
 
 export default function Home() {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [cardColor, setCardColor] = useState<string>("#f6b8d1");
+    const [cardColorClass, setCardColorClass] = useState<string>("card-color-red");
     const [args, setArgs] = useState<AnimationProp>({ x: 0, opacity: 1 });
 
 
-    const cardColorChoices = [
-        "#f6b8d1",
-        "#fdbf4d",
-        "#304875",
-        "#53bfa9",
+    const cardColorClasses = [
+        "card-color-red",
+        "card-color-blue",
+        "card-color-orange",
+        "card-color-purple"
     ];
     const alphabets = [
         "A", "B", "C", "D",
@@ -45,7 +45,7 @@ export default function Home() {
             () => {
                 setArgs({ x: [100 * val, 0], opacity: [1, 1] });
                 setCurrentIndex(newCount);
-                setCardColor(cardColorChoices[newCount % 4])
+                setCardColorClass(cardColorClasses[newCount % 4])
             },
             500
         );
@@ -55,9 +55,8 @@ export default function Home() {
     return <div className="row justify-content-center" style={{ paddingTop: "17vh" }}>
         <div className="col-3 pt-5">
             <button
-                style={{ height: "10vh", backgroundColor: "#fcbd4d", border: "medium double black" }}
                 disabled={currentIndex <= 0}
-                className="btn btn-lg"
+                className="btn btn-lg text-white btn-nav"
                 onClick={() => handleClick(-1)}
             >
                 <Left />
@@ -65,8 +64,7 @@ export default function Home() {
         </div>
         <div className="col-4 text-center">
             <motion.div
-                style={{ height: "25vh", backgroundColor: cardColor, border: `medium double black` }}
-                className="card text-white"
+                className={`card ${cardColorClass}`}
                 initial={{ x: 0, opacity: 1 }}
                 animate={args}
             >
@@ -79,9 +77,8 @@ export default function Home() {
         </div>
         <div className="col-3 text-end pt-5">
             <button
-                style={{ height: "10vh", backgroundColor: "#fcbd4d", border: "medium double black" }}
                 disabled={currentIndex >= alphabets.length - 1}
-                className="btn btn-lg"
+                className="btn btn-lg text-white btn-nav"
                 onClick={() => handleClick(1)}
             >
                 <Right />

@@ -11,9 +11,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ms">
       <body>
-        <div className="row mt-5">
-          <div className="col-12 text-center mt-5">
-            <h1>Let's learn A B C!</h1>
+        <div className="row justify-content-center mt-5">
+          <div className="col-4 text-center mt-5">
+            <div className="card card-custom">
+              <div className="card-body">
+                <h1 className="card-title">Let's learn A B C!</h1>
+              </div>
+            </div>
           </div>
         </div>
         {children}
